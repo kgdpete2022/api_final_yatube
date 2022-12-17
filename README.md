@@ -1,30 +1,30 @@
-# API проекта Yatube (v1)
+# Yatube project API (v1)
 
-#### Описание
+#### Description
 
-API-сервис проекта yatube, позволяющий пользователям получать информацию о постах (включая дополнительную информацию - группы, авторы, подписки)
+API service of the yatube project, allowing users to receive information about posts (including additional information - groups, authors, subscriptions)
 
-#### Установка
+#### Installation
 
-Клонировать репозиторий:
+Clone repository:
 
 ```
 git clone git@github.com:kgdpete2022/api_final_yatube.git
 ```
 
-Перейти в корневой каталог:
+Go to root directory:
 
 ```
-cd kittygram_backend
+cd api_final_yatube
 ```
 
-Cоздать виртуальное окружение:
+Create virtual environment:
 
 ```
 python3 -m venv env
 ```
 
-Активировать виртуальное окружение:
+Activate virtual environment:
 
 - Linux/macOS
 
@@ -32,51 +32,51 @@ python3 -m venv env
 source venv/bin/activate
 ```
 
-- Windows
+-Windows
 
 ```
 source venv/scripts/activate
 ```
 
-Обновить pip:
+Update pip:
 
 ```
 python3 -m -pip install --upgrade pip
 ```
 
-Установить зависимости из файла requirements.txt:
+Install dependencies from requirements.txt file:
 
 ```
 pip install -r requirements.txt
 ```
 
-Выполнить миграции:
+Run migrations:
 
 ```
 python3 manage.py migrate
 ```
 
-Запустить проект:
+Run project:
 
 ```
 python3 manage.py runserver
 ```
 
-#### Примеры запросов к API
+#### API request examples
 
-Получение списка всех публикаций:
+Getting a list of all publications:
 
 ```
 GET /api/v1/posts/
 ```
 
-Добавление новой публикации в коллекцию публикаций
+Adding a new publication to the collection of publications
 
 ```
 POST /api/v1/posts/
 ```
 
-Получение публикации по id:
+Getting a publication by id:
 
 ```
 GET /api/v1/posts/{id}/
