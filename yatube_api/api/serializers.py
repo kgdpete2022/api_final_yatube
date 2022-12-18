@@ -31,10 +31,6 @@ class CommentSerializer(serializers.ModelSerializer):
 
 class GroupSerializer(serializers.ModelSerializer):
     
-    def create(self, request):
-        return Response(status=status.HTTP_405_METHOD_NOT_ALLOWED)
-    
-    
     class Meta:
         fields = '__all__'
         model = Group
