@@ -2,7 +2,7 @@ from rest_framework import viewsets, permissions, filters
 from posts.models import Post, Group, Follow
 from .permissions import AuthorOrReadOnly
 from .serializers import (
-    PostSerializer, 
+    PostSerializer,
     GroupSerializer,
     CommentSerializer,
     FollowSerializer
