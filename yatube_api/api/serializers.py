@@ -9,7 +9,7 @@ from posts.models import Comment, Post, Group, Follow, User
 class PostSerializer(serializers.ModelSerializer):
     author = SlugRelatedField(
         slug_field='username',
-        read_only=True       
+        read_only=True
     )
 
     class Meta:
@@ -29,7 +29,7 @@ class CommentSerializer(serializers.ModelSerializer):
 
 
 class GroupSerializer(serializers.ModelSerializer):
-    
+
     class Meta:
         fields = '__all__'
         model = Group
@@ -44,9 +44,9 @@ class FollowSerializer(serializers.ModelSerializer):
     following = serializers.SlugRelatedField(
         slug_field='username',
         queryset=User.objects.all()
-    ) 
-    
-    
+    )
+
+
     class Meta:
         fields = '__all__'
         model = Follow
@@ -63,6 +63,3 @@ class FollowSerializer(serializers.ModelSerializer):
                 'Пользователь не может быть подписан на самого себя'
             )
         return data
-
-
-

@@ -3,6 +3,7 @@ from django.db import models
 
 User = get_user_model()
 
+
 class Group(models.Model):
     title = models.CharField('Названмие группы', max_length=200)
     slug = models.SlugField('URL-адрес группы', max_length=200, unique=True)
@@ -47,13 +48,13 @@ class Follow(models.Model):
     following = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
-        related_name='following'        
+        related_name='following'
     )
 
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=['user','following'],
+                fields=['user', 'following'],
                 name='unique_user_following'
             )
         ]
