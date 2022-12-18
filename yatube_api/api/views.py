@@ -19,7 +19,7 @@ class PostViewSet(viewsets.ModelViewSet):
 class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
-    permission_classes = (ReadOnly,)
+
 
 
 class CommentViewSet(viewsets.ModelViewSet):
@@ -40,7 +40,7 @@ class FollowViewSet(viewsets.ModelViewSet):
     permission_classes = [permissions.IsAuthenticated, AuthorOrReadOnly]
     pagination_class = None
     filter_backends = (filters.SearchFilter,)
-    search_fields = ('user__username',)
+    search_fields = ('user__username','following__username',)
 
     def get_queryset(self):
         return Follow.objects.filter(user=self.request.user)
