@@ -46,7 +46,6 @@ class FollowSerializer(serializers.ModelSerializer):
         queryset=User.objects.all()
     )
 
-
     class Meta:
         fields = '__all__'
         model = Follow
