@@ -44,7 +44,7 @@ class Follow(models.Model):
         on_delete=models.CASCADE,
         related_name='follower'
     )
-    author = models.ForeignKey(
+    following = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
         related_name='following'        
@@ -53,7 +53,7 @@ class Follow(models.Model):
     class Meta:
         constraints = [
             models.UniqueConstraint(
-                fields=['user','author'],
-                name='unique_author_user_following'
+                fields=['user','following'],
+                name='unique_user_following'
             )
         ]
