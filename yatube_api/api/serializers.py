@@ -9,8 +9,7 @@ from posts.models import Comment, Post, Group, Follow, User
 class PostSerializer(serializers.ModelSerializer):
     author = SlugRelatedField(
         slug_field='username',
-        read_only=True,
-        default=serializers.CurrentUserDefault()
+        read_only=True       
     )
 
     class Meta:
