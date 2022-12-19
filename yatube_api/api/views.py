@@ -41,10 +41,10 @@ class CommentViewSet(viewsets.ModelViewSet):
 
 
 class FollowViewSet(
-                    mixins.CreateModelMixin,
-                    mixins.ListModelMixin,
-                    viewsets.GenericViewSet
-                    ):
+        mixins.CreateModelMixin,
+        mixins.ListModelMixin,
+        viewsets.GenericViewSet
+    ):
     serializer_class = FollowSerializer
     permission_classes = [permissions.IsAuthenticated, AuthorOrReadOnly]
     pagination_class = None
