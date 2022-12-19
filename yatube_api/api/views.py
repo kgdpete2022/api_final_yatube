@@ -1,5 +1,4 @@
-from rest_framework import viewsets, permissions, filters, mixins, status
-from rest_framework.response import Response
+from rest_framework import viewsets, permissions, filters, mixins
 from posts.models import Post, Group, Follow
 from .permissions import AuthorOrReadOnly
 from .serializers import (
@@ -42,10 +41,10 @@ class CommentViewSet(viewsets.ModelViewSet):
 
 
 class FollowViewSet(
-    mixins.CreateModelMixin,
-    mixins.ListModelMixin,
-    viewsets.GenericViewSet
-    ):
+                    mixins.CreateModelMixin,
+                    mixins.ListModelMixin,
+                    viewsets.GenericViewSet
+                    ):
     serializer_class = FollowSerializer
     permission_classes = [permissions.IsAuthenticated, AuthorOrReadOnly]
     pagination_class = None
