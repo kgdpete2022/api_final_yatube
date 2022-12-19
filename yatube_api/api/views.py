@@ -1,4 +1,5 @@
-from rest_framework import viewsets, permissions, filters
+from rest_framework import viewsets, permissions, filters, mixins, status
+from rest_framework.response import Response
 from posts.models import Post, Group, Follow
 from .permissions import AuthorOrReadOnly
 from .serializers import (
@@ -30,16 +31,21 @@ class CommentViewSet(viewsets.ModelViewSet):
     serializer_class = CommentSerializer
     permission_classes = (AuthorOrReadOnly,)
 
+    def get_post(self):
+        return get_object_or_404(Post, id=self.kwargs.get('post_id'))
+
     def get_queryset(self):
-        post = get_object_or_404(Post, id=self.kwargs.get('post_id'))
-        return post.comments.all()
+        return self.get_post().comments.all()
 
     def perform_create(self, serializer):
-        post = get_object_or_404(Post, id=self.kwargs.get('post_id'))
-        serializer.save(author=self.request.user, post=post)
+        serializer.save(author=self.request.user, post=self.get_post())
 
 
-class FollowViewSet(viewsets.ModelViewSet):
+class FollowViewSet(
+    mixins.CreateModelMixin,
+    mixins.ListModelMixin,
+    viewsets.GenericViewSet
+    ):
     serializer_class = FollowSerializer
     permission_classes = [permissions.IsAuthenticated, AuthorOrReadOnly]
     pagination_class = None
